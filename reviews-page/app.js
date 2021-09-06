@@ -36,4 +36,61 @@ const reviews = [
       text:
         "Edison bulb put a bird on it humblebrag, marfa pok pok heirloom fashion axe cray stumptown venmo actually seitan. VHS farm-to-table schlitz, edison bulb pop-up 3 wolf moon tote bag street art shabby chic. ",
     },
+    {
+        id: 5,
+        name: "Anthony Carnero",
+        job: "Full Stack Developer",
+        img: 'ants.jpeg',
+        text: "I’m a full-stack software engineer from the bay area. Always looking to dive into new technologies and never stop learning."
+    }
   ];
+
+  // select items
+  const author = document.getElementById('author')
+  const img = document.getElementById('person-img')
+  const job = document.getElementById('job')
+  const info = document.getElementById('info')
+
+  const prevBtn = document.querySelector('.prev-btn')
+  const nextBtn = document.querySelector('.next-btn')
+  const randomBtn = document.querySelector('.random-btn')
+
+  let currentPerson = 0
+
+// load person
+  window.addEventListener('DOMContentLoaded', () => {
+      showPerson()
+  })
+
+// set current person
+  function showPerson() {
+    let person = reviews[currentPerson]
+    author.innerText = person.name
+    img.src = person.img
+    job.innerText = person.job
+    info.innerText = person.text
+  }
+
+  // show next person
+  nextBtn.addEventListener('click', () => {
+      currentPerson++
+      if (currentPerson > reviews.length - 1) {
+          currentPerson = 0
+        }
+        showPerson()
+  })
+
+  // show prev person
+  prevBtn.addEventListener('click', () => {
+      currentPerson--
+      if (currentPerson < 0) {
+          currentPerson = reviews.length - 1
+        }
+        showPerson()
+  })
+
+  // show random person
+  randomBtn.addEventListener('click', () => {
+      currentPerson = Math.floor(Math.random() * reviews.length)
+      showPerson()
+  })
