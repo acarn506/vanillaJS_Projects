@@ -97,3 +97,20 @@ function displayMenuItems(menuItems) {
     displayMenu = displayMenu.join('')
     sectionCenter.innerHTML = displayMenu
 }
+// filter items
+const filterBtns = document.querySelectorAll('.filter-btn')
+
+filterBtns.forEach( btn => {
+    btn.addEventListener('click', (e) => {
+        const category = e.currentTarget.dataset.id
+        const filterMenu = menu.filter( item => {
+            return item.category === category
+        })
+        if (category === 'all') {
+            displayMenuItems(menu)
+        } else {
+            displayMenuItems(filterMenu)
+        }
+    })
+})
+
