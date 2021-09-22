@@ -73,12 +73,15 @@ const menu = [
     },
   ];
 
-const sectionCenter = document.querySelector('.section-center')
-
 // load content
 window.addEventListener('DOMContentLoaded', () => {
    displayMenuItems(menu)
+
+    displayMenuBtns()
 })
+
+const sectionCenter = document.querySelector('.section-center')
+const btnContainer = document.querySelector('.btn-container')
 
 function displayMenuItems(menuItems) {
     let displayMenu = menuItems.map( item => {
@@ -97,20 +100,36 @@ function displayMenuItems(menuItems) {
     displayMenu = displayMenu.join('')
     sectionCenter.innerHTML = displayMenu
 }
-// filter items
-const filterBtns = document.querySelectorAll('.filter-btn')
 
-filterBtns.forEach( btn => {
-    btn.addEventListener('click', (e) => {
-        const category = e.currentTarget.dataset.id
-        const filterMenu = menu.filter( item => {
-            return item.category === category
-        })
-        if (category === 'all') {
-            displayMenuItems(menu)
-        } else {
-            displayMenuItems(filterMenu)
+
+function displayMenuBtns() {
+    const categories = menu.reduce( (values, curr) => {
+        if (!values.includes(curr.category)) {
+            values.push(curr.category)
         }
-    })
-})
+        return values
+   }, ['all'])
 
+   const categoryButtons = categories.map( category => {
+       return ` <button class="filter-btn" type='button' data-id=${category}>${category}</button>`
+   }).join('')
+
+   btnContainer.innerHTML = categoryButtons
+
+   // filter items
+    const filterBtns = document.querySelectorAll('.filter-btn')
+
+    filterBtns.forEach( btn => {
+        btn.addEventListener('click', (e) => {
+            const category = e.currentTarget.dataset.id
+            const filterMenu = menu.filter( item => {
+                return item.category === category
+            })
+            if (category === 'all') {
+                displayMenuItems(menu)
+            } else {
+                displayMenuItems(filterMenu)
+            }
+        })
+    })
+}
