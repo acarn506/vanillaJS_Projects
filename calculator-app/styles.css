@@ -1,9 +1,8 @@
 :root {
     /* theme 1 */
     --main-bg: hsl(228, 32%, 28%);
-    --input-bg: hsl(232, 48%, 14%);
-    --btn-bg: hsl(232, 42%, 20%)
-
+    --input-bg: hsl(232, 43%, 14%);
+    --btn-bg: hsl(232, 42%, 20%);
 }
 
 * {
@@ -25,9 +24,24 @@ body {
     margin: 50px 0;
 }
 
+.heading {
+    display: flex;
+    justify-content: space-between;
+    width: 420px;
+}
+
 .title {
     color: white;
 }
+
+.toggle-container {
+    display: flex;
+}
+
+.toggle-theme {
+    margin: 0 0 0 10px;
+}
+
 
 .calc-input {
     background: var(--input-bg);
@@ -35,12 +49,21 @@ body {
     margin: 20px 0;
     width: 420px;
     height: 90px;
-    font-size: 30px;
+    font-size: 35px;
     color: white;
     font-weight: bold;
+    border-radius: 0.5rem;
 }
 
 .btn-controls {
+    width: 420px;
+    margin: 20px 0;
     background: var(--btn-bg);
-
+    border-radius: 0.5rem;
+    grid-template-areas: 
+    "7 8 9 Del"
+    "4 5 6 +"
+    "1 2 3 -"
+    ". 0 / x"
+    "reset . . =";
 }
