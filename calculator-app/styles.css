@@ -1,0 +1,46 @@
+:root {
+    /* theme 1 */
+    --main-bg: hsl(228, 32%, 28%);
+    --input-bg: hsl(232, 48%, 14%);
+    --btn-bg: hsl(232, 42%, 20%)
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--main-bg);
+}
+
+.container {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0;
+}
+
+.title {
+    color: white;
+}
+
+.calc-input {
+    background: var(--input-bg);
+    padding: 15px;
+    margin: 20px 0;
+    width: 420px;
+    height: 90px;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+}
+
+.btn-controls {
+    background: var(--btn-bg);
+
+}
