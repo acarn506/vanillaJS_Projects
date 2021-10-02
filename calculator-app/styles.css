@@ -56,14 +56,19 @@ body {
 }
 
 .btn-controls {
+    display: grid;
     width: 420px;
     margin: 20px 0;
     background: var(--btn-bg);
     border-radius: 0.5rem;
-    grid-template-areas: 
-    "7 8 9 Del"
-    "4 5 6 +"
-    "1 2 3 -"
-    ". 0 / x"
-    "reset . . =";
+    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 15px;
+}
+
+.calc-btn {
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 10px;
+    font-size: 20px;
 }
