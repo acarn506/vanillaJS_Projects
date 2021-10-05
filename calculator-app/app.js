@@ -13,10 +13,7 @@ class Calculator {
     }
 
     delete() {
-        if (this.currOperand) {
-            const number = Math.floor(this.currOperand / 10)
-            this.currOperand =  number === 0 ? '' : number
-        }
+        this.currOperand = this.currOperand.toString().slice(0, -1)
     }
 
     addNumber(number) {
@@ -30,19 +27,68 @@ class Calculator {
         if (this.prevOperand !== '') {
             this.calculate()
         }
-        
+
         this.operation = operation
         this.prevOperand = this.currOperand
         this.currOperand = ''
     }
 
     calculate() {
+        let computation
+        const prev = parseFloat(this.prevOperand)
+        const curr = parseFloat(this.currOperand)
+        if (isNaN(prev) || isNaN(curr)) return
+        
+        switch (this.operation) {
+            case '+':
+                computation = prev + curr
+                break
+            case '-':
+                computation = prev - curr
+                break
+            case '/':
+                computation = prev / curr
+                break
+            case 'x':
+                computation = prev * curr
+                break
+            default:
+                return 
+        }
+
+        this.currOperand = computation
+        this.operation = undefined
+        this.prevOperand = ''
+    }
+
+    getDisplayNUmber(number) {
+        const stringNumber = number.toString()
+        const integerDigits = parseFloat(stringNumber.split('.')[0])
+        const decimalDigits = stringNumber.split('.')[1]
+
+       let integerDisplay
+       if (isNaN(integerDigits)) {
+           integerDisplay = ''
+       } else {
+           integerDisplay = integerDigits.toLocaleString('en', { maximumFractionDigits : 0 })
+       }
+
+       if (decimalDigits !== undefined) {
+           return `${integerDisplay}.${decimalDigits}`
+       } else {
+           return integerDisplay
+       }
 
     }
 
     updateDisplay() {
-        this.currOperandText.innerText = this.currOperand
-        this.prevOperandText.innerText = this.prevOperand
+        this.currOperandText.innerText = this.getDisplayNUmber(this.currOperand)
+
+        if (this.operation !== undefined) {
+            this.prevOperandText.innerText = `${this.getDisplayNUmber(this.prevOperand)} ${this.operation}`
+        } else {
+            this.prevOperandText.innerText = ''
+        }
     }
 }
 
@@ -53,6 +99,7 @@ const equal = document.querySelector('[data-equal]')
 const reset = document.querySelector('[data-reset]')
 const prevOperandText = document.querySelector('[data-previous]')
 const currOperandText = document.querySelector('[data-current]')
+
 // calculator instance 
 const calculator = new Calculator(prevOperandText, currOperandText)
 
@@ -77,5 +124,10 @@ del.addEventListener('click', () => {
 
 reset.addEventListener('click', () => {
     calculator.clear()
+    calculator.updateDisplay()
+})
+
+equal.addEventListener('click', () => {
+    calculator.calculate()
     calculator.updateDisplay()
 })

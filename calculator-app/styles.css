@@ -90,12 +90,19 @@ body {
     margin: 20px 0;
     width: 420px;
     height: 90px;
-    font-size: 35px;
     color: white;
     font-weight: bold;
     border-radius: 0.5rem;
     word-wrap: break-word;
     word-break: break-all;
+}
+
+.previousOperand {
+    font-size: 1.5rem
+}
+
+.currentOperand {
+    font-size: 2.5rem
 }
 
 .btn-controls {
