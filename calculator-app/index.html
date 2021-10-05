@@ -20,45 +20,46 @@
     <div class="heading">
       <h1 class="title">calc</h1>
       <div class="toggle-container">
-        <span>Theme</span>
+        <h4>Theme</h4>
         <div class="toggle-theme">
-          <label>
-            <input type='radio'/>
-            <span></span>
+          <label class="radio-btn">
+            <input type='radio' checked />
+            <span class="checkmark"></span>
           </label>
-          <label>
+          <label class="radio-btn">
             <input type='radio'/>
-            <span></span>
+            <span class="checkmark"></span>
           </label>
-          <label>
+          <label class="radio-btn">
             <input type='radio'/>
-            <span></span>
+            <span class="checkmark"></span>
           </label>
         </div>
       </div>
       </div>
-    <article >
-      <input class="calc-input"/>
+    <article class='calc-input'>
+      <div data-previous class="previousOperand"></div>
+      <div data-current class="currentOperand"></div>
     </article>
     <div class="btn-controls">
-      <button class="calc-btn ">7</button>
-      <button class="calc-btn">8</button>
-      <button class="calc-btn">9</button>
-      <button class="calc-btn">DEL</button>
-      <button class="calc-btn">4</button>
-      <button class="calc-btn">5</button>
-      <button class='calc-btn'>6</button>
-      <button class="calc-btn ">&plus;</button>
-      <button class="calc-btn ">1</button>
-      <button class="calc-btn ">2</button>
-      <button class="calc-btn">3</button>
-      <button class="calc-btn">&minus;</button>
-      <button class="calc-btn">.</button>
-      <button class="calc-btn">0</button>
-      <button class="calc-btn">&divide;</button>
-      <button class="calc-btn">&times;</button>
-      <button class="calc-btn item-reset">RESET</button>
-      <button class="calc-btn item-equal">=</button>
+      <button data-number class="calc-btn ">7</button>
+      <button data-number class="calc-btn">8</button>
+      <button data-number class="calc-btn">9</button>
+      <button data-del class="calc-btn item-del">DEL</button>
+      <button data-number class="calc-btn">4</button>
+      <button data-number class="calc-btn">5</button>
+      <button data-number class='calc-btn'>6</button>
+      <button data-operator class="calc-btn ">&plus;</button>
+      <button data-number class="calc-btn ">1</button>
+      <button data-number class="calc-btn ">2</button>
+      <button data-number class="calc-btn">3</button>
+      <button data-operator class="calc-btn">&minus;</button>
+      <button data-number class="calc-btn">.</button>
+      <button data-number class="calc-btn">0</button>
+      <button data-operator class="calc-btn">&divide;</button>
+      <button data-operator class="calc-btn">&times;</button>
+      <button data-reset class="calc-btn item-reset">RESET</button>
+      <button data-equal class="calc-btn item-equal">=</button>
     </div>
   </section>
 
@@ -68,5 +69,7 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">Anthony Carnero</a>.
   </div>
+   <!-- javascript -->
+  <script src="app.js"></script>
 </body>
 </html>
