@@ -179,6 +179,7 @@ Countdown Timer
 */
 .gift-img {
   margin-bottom: 2rem;
+  border-radius: 0.25rem;
 }
 .gift-info h3 {
   text-transform: uppercase;
